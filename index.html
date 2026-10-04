@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect 4 Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-anim">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+
+    <div class="container glass-panel">
+        <header>
+            <h1>CONNECT <span class="accent">4</span></h1>
+            <p class="subtitle">Strategic Gravity</p>
+        </header>
+
+        <main>
+            <!-- Setup Screen -->
+            <div id="setup-screen" class="screen active">
+                <div class="setup-section">
+                    <h2>Select Game Mode</h2>
+                    <div class="mode-buttons">
+                        <button class="btn btn-primary" id="btn-pvp">Player vs Player</button>
+                        <button class="btn btn-primary" id="btn-pva">Player vs Computer</button>
+                    </div>
+                </div>
+
+                <div class="setup-section" id="ai-levels-section" style="display: none;">
+                    <h2>Computer Difficulty (Level)</h2>
+                    <div class="level-buttons">
+                        <button class="btn btn-outline level-btn" data-level="1">Lvl 1 (Noob)</button>
+                        <button class="btn btn-outline level-btn" data-level="2">Lvl 2 (Easy)</button>
+                        <button class="btn btn-outline level-btn" data-level="3">Lvl 3 (Normal)</button>
+                        <button class="btn btn-outline level-btn" data-level="4">Lvl 4 (Hard)</button>
+                        <button class="btn btn-outline level-btn" data-level="5">Lvl 5 (Expert)</button>
+                    </div>
+                </div>
+
+                <div class="setup-section" id="match-length-section" style="display: none;">
+                    <h2>Match Length</h2>
+                    <div class="level-buttons">
+                        <button class="btn btn-outline match-btn" data-rounds="1">1 Round</button>
+                        <button class="btn btn-outline match-btn" data-rounds="3">Best of 3</button>
+                        <button class="btn btn-outline match-btn" data-rounds="5">Best of 5</button>
+                    </div>
+                </div>
+
+                <button class="btn btn-cta" id="btn-start-game" disabled>Start Game</button>
+            </div>
+
+            <!-- Game Screen -->
+            <div id="game-screen" class="screen">
+                <div class="game-header">
+                    <div class="scoreboard">
+                        <div class="player-score p1">
+                            <div class="avatar p1-color"></div>
+                            <div class="score-details">
+                                <span class="name">Player 1</span>
+                                <span class="score" id="score-p1">0</span>
+                            </div>
+                        </div>
+                        <div class="match-info">
+                            <span id="round-display">Round 1</span>
+                            <span id="turn-indicator" class="turn-p1">P1's Turn</span>
+                        </div>
+                        <div class="player-score p2">
+                            <div class="score-details right">
+                                <span class="name" id="name-p2">Player 2</span>
+                                <span class="score" id="score-p2">0</span>
+                            </div>
+                            <div class="avatar p2-color"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="board-container">
+                    <div id="board" class="board">
+                        <!-- Grid cells injected by JS -->
+                    </div>
+                    <div class="board-base"></div>
+                </div>
+                
+                <div class="game-footer">
+                    <button class="btn btn-secondary" id="btn-reset-round">Restart Round</button>
+                    <button class="btn btn-secondary" id="btn-quit">Quit Match</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="result-modal">
+        <div class="modal glass-panel">
+            <h2 id="result-title">Player 1 Wins!</h2>
+            <p id="result-message">Great strategy.</p>
+            <div class="modal-actions">
+                <button class="btn btn-primary" id="btn-next-round">Next Round</button>
+                <button class="btn btn-secondary" id="btn-modal-quit">End Match</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
